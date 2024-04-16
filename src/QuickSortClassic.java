@@ -46,4 +46,13 @@ public class QuickSortClassic {
         System.out.println("]");
     }
 
+    public static void main(String[] args) {
+        int[] arr = {11, 77, 55,66 , 44, 33, 22, 88};
+        int low = 0;
+        int high = arr.length-1;
+        printArray(arr);
+        quickSort(arr, low, high);
+        printArray(arr);
+    }
+
 }
