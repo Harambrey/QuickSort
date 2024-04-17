@@ -12,24 +12,28 @@ public class QuickSortClassic {
     }
 
     public static int partition(int[] arr, int pi, int ri) {
-        int xt = arr[pi];
-        int it = pi-1;
-        int jt = ri+1;
-        while (true) {
-            jt = jt-1;
-            if (arr[jt] <= xt) {
-                break;
+        int pivot = arr[pi];
+        int left = pi + 1;
+        int right = ri;
+    
+        while (left <= right) {
+            while (left <= ri && arr[left] < pivot) {
+                left++;
+            }
+    
+            while (right >= pi && arr[right] > pivot) {
+                right--;
+            }
+    
+            if (left < right) {
+                swap(arr, left, right);
+                left++;
+                right--;
             }
         }
-
-        while (true) {
-            it = it+1;
-            if (arr[it] >= xt) {
-                break;
-            }
-        }
-        swap(arr, it, jt);
-        return jt;
+    
+        swap(arr, pi, right);
+        return right;
     }
 
     private static void swap(int[] arr, int i, int j) {
