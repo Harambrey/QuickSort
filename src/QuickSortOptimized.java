@@ -15,7 +15,6 @@ public class QuickSortOptimized {
         } else {
             // Otherwise, calculate a pivot using the calculatePivot method.
             double a = calculatePivot(arr, low, high);
-            System.out.println(a);
             // Partition the array around the pivot and get the partition index.
             int q = partition(arr, low, high, a);
 
