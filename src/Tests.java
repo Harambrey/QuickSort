@@ -14,11 +14,11 @@ public class Tests {
          */
         
 
-        int[] arr = new int[100];
+        int[] arr = new int[25];
         int n = arr.length;
-
         fillRandom(arr);
-        Arrays.sort(arr);
+        //Arrays.sort(arr);
+        //reverseArray(arr);
 
         int[] arr1 = arr.clone();
 
@@ -57,10 +57,18 @@ public class Tests {
 
     private static void fillRandom(int[] arr) {
         Random random = new Random();
-        random.setSeed(31);
 
         for (int i = 0; i < arr.length; i++) {
             arr[i] = random.nextInt(1000); // storing random integers in an array
+        }
+    }
+
+    private static void reverseArray(int[] arr) {
+        int n = arr.length;
+        for (int i = 0, j = n - 1; i < j; i++, j--) {
+            int temp = arr[i];
+            arr[i] = arr[j];
+            arr[j] = temp;
         }
     }
 

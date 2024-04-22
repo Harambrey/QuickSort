@@ -53,7 +53,6 @@ public class QuickSortClassic {
         int low = 0;
         int high = arr.length-1;
         printArray(arr);
-        quickSort(arr, low, high);
         printArray(arr);
     }
 
