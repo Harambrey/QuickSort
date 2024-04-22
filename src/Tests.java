@@ -12,6 +12,7 @@ public class Tests {
          * the worst case is when the array is either already sorted or sorted in descending order, which
          * requires the worst case partitioning
          */
+        
 
         int[] arr = new int[100];
         int n = arr.length;
@@ -39,7 +40,7 @@ public class Tests {
         //classic quicksort
         printArray(arr2);
         startTime = System.nanoTime();
-        QuickSortClassic.quickSort(arr2, 0, n-1);
+        QuickSortClassic.quickSort(arr2);
         endTime = System.nanoTime();
         timeTaken = endTime - startTime;
         System.out.println(timeTaken + " nanoseconds");

@@ -3,37 +3,35 @@ package src;
 
 
 public class QuickSortClassic {
-    public static void quickSort(int[] arr,int pi, int ri) {
-        if (pi < ri) {
-            int qt = partition(arr, pi, ri);
-            quickSort(arr, pi, qt);
-            quickSort(arr, qt+1, ri);
+    public static void quickSort(int[] arr) {
+        int low = 0;
+        int high = arr.length-1;
+
+        quickSortHelper(arr, low, high);
+    }
+
+    public static void quickSortHelper(int[] arr, int low, int high) {
+        if (low < high) {
+            int pivotIndex = partition(arr, low, high);
+            quickSortHelper(arr, low, pivotIndex-1);
+            quickSortHelper(arr, pivotIndex+1, high);
         }
     }
 
-    public static int partition(int[] arr, int pi, int ri) {
-        int pivot = arr[pi];
-        int left = pi + 1;
-        int right = ri;
-    
-        while (left <= right) {
-            while (left <= ri && arr[left] < pivot) {
-                left++;
-            }
-    
-            while (right >= pi && arr[right] > pivot) {
-                right--;
-            }
-    
-            if (left < right) {
-                swap(arr, left, right);
-                left++;
-                right--;
+    public static int partition(int[] arr, int low, int high) {
+        
+        int pivot = arr[high];
+        int i = low-1;
+
+        for(int j = low; j < high; j++) {
+            if (arr[j] < pivot) {
+                i++;
+                swap(arr, i, j);
             }
         }
-    
-        swap(arr, pi, right);
-        return right;
+        swap(arr, i+1, high);
+        return i + 1;
+        
     }
 
     private static void swap(int[] arr, int i, int j) {
