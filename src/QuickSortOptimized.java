@@ -103,23 +103,29 @@ public class QuickSortOptimized {
 
         // Loop to move elements around the pivot.
         while(true) {
-            //System.out.println(pivot);
-            //System.out.println(arr[i]);
-            // Increment i until an element greater than the pivot is found.
-            while (arr[i] <= pivot) {
+            // Move i right past elements less than or equal to the pivot
+            while (arr[i] < pivot) {
                 i++;
-            }
-            // Decrement j until an element less than the pivot is found.
-            while (arr[j] > pivot) {
-                j--;
+                if (i == high) break;  // Prevent i from going out of bounds
             }
 
-            // If the pointers have crossed, return the partition index.
-            if (i >= j) {
-                return j ;
+            // Move j left past elements greater than the pivot
+            while (arr[j] > pivot) {
+                j--;
+                if (j == low) break;  // Prevent j from going out of bounds
             }
-            // Swap the elements at i and j.
+
+            // Check if all elements have been processed
+            if (i >= j) {
+                return j;  // Partition point
+            }
+
+            // Swap elements at i and j
             swap(arr, i, j);
+
+            // Move indices to continue processing
+            i++;
+            j--;
         }
     }
 
